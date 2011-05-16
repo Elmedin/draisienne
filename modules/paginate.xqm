@@ -1,7 +1,11 @@
-module namespace paginate = "paginate.xqm";
-(:
-This module allows to paginate arbitrary sequences of nodes.
+(:~ 
+: This module provides helper functions for pagination. 
+:
+: @author Michael Seiferle
+: @author BaseX Team, 2011
+
 :)
+module namespace paginate = "paginate.xqm";
 
 (:
 This method paginates an arbitrary number of elements.
@@ -28,6 +32,8 @@ declare function paginate:paginate($page as xs:integer, $perPage as xs:integer,
         else
           <div class="error">No more pages available.</div>
 };
+
+
 declare function paginate:links($page as xs:integer, $perPage as xs:integer, $total as xs:integer){
   let $pages := if( 0 != ($total mod $perPage) ) 
                   then 1 + ($total idiv $perPage)
